@@ -190,6 +190,7 @@ public class LevelController : MonoBehaviour
     public void GameOverHandler()
     {
         uiController.LevelFail();
+        GoogleAds.Instance.CallAds();
     }
     
 }

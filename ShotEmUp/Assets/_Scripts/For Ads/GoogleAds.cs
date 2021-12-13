@@ -6,7 +6,7 @@ using GoogleMobileAds.Api;
 
 public class GoogleAds : MonoBehaviour
 {
-
+    private InterstitialAd interstitial;
     public static GoogleAds Instance;
     void Awake()
     {
@@ -23,22 +23,15 @@ public class GoogleAds : MonoBehaviour
     {
         //Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(initStatus => { });
-        
-        /*RequestConfiguration requestConfiguration =
-            new RequestConfiguration.Builder()
-                .SetSameAppKeyEnabled(true).build();
-        MobileAds.SetRequestConfiguration(requestConfiguration);*/
-
-        //Initialize the Google Mobile Ads SDK.
-        //MobileAds.Initialize(HandleInitCompleteAction);
+        RequestInterstitial();
     }
     
-    private InterstitialAd interstitial;
+    
 
     public void RequestInterstitial()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-5875384463485278~1175230777";
+        string adUnitId = "ca-app-pub-5875384463485278/9600515707";
 #elif UNITY_IPHONE
         string adUnitId = "ca-app-pub-5875384463485278/2101299632";
 #else
@@ -93,15 +86,15 @@ public class GoogleAds : MonoBehaviour
     {
         MonoBehaviour.print("HandleAdLeavingApplication event received");
     }
-   /* 
-    public void GameOver()
+   
+    public void CallAds()
     {
+        RequestInterstitial();
         if (this.interstitial.IsLoaded()) {
             this.interstitial.Show();
         }
-    } 
-    */
-    
+    }
 
-    
+
+
 }
