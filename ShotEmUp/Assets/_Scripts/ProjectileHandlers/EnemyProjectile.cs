@@ -37,7 +37,7 @@ public class EnemyProjectile : MonoBehaviour
     {
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         //Make enemy death if projectile hits iy
         if (other.gameObject.CompareTag("Projectile"))

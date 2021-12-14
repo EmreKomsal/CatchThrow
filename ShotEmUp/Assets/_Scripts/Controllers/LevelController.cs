@@ -189,6 +189,7 @@ public class LevelController : MonoBehaviour
     public void GameOverHandler()
     {
         uiController.LevelFail();
+        readyForEncounter = false;
     }
     
 }

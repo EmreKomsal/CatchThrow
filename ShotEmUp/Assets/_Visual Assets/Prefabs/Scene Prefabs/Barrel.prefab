@@ -145,9 +145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b4501ceebe87a47a5c226bdf905518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TagList:
+  - Enemy
+  - Projectile
   radius: 5
   explosionForce: 700
-  brokenObj: {fileID: 0}
+  brokenObj: {fileID: 2036853986038667118, guid: f7b6df30bfd93eb418cdf0ae8a25a08e,
+    type: 3}
 --- !u!208 &593684664
 NavMeshObstacle:
   m_ObjectHideFlags: 0

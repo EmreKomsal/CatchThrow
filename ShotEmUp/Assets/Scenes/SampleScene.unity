@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -885,6 +885,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2036853986038667118, guid: f7b6df30bfd93eb418cdf0ae8a25a08e,
         type: 3}
+    - target: {fileID: 2036853986038667113, guid: 670993f481941df49aa9b6959cb76f4b,
+        type: 3}
+      propertyPath: TagList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036853986038667113, guid: 670993f481941df49aa9b6959cb76f4b,
+        type: 3}
+      propertyPath: TagList.Array.data[0]
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036853986038667113, guid: 670993f481941df49aa9b6959cb76f4b,
+        type: 3}
+      propertyPath: TagList.Array.data[1]
+      value: Projectile
+      objectReference: {fileID: 0}
     - target: {fileID: 2036853986038667118, guid: 670993f481941df49aa9b6959cb76f4b,
         type: 3}
       propertyPath: m_Name
@@ -2818,11 +2833,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1347224299}
     m_Modifications:
-    - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
-        type: 3}
-      propertyPath: enemyEncounterNumber
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945623, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
         type: 3}
       propertyPath: m_RootOrder

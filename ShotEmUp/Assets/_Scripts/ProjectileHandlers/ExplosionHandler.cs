@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ExplosionHandler : MonoBehaviour
 {
+    [Header("Tag List")] public List<string> TagList;
+    
     public float radius = 5f; //Explosion Radius
     public float explosionForce = 1000f;
 
@@ -12,7 +14,7 @@ public class ExplosionHandler : MonoBehaviour
     private bool isBroken = false;
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Projectile") && !isBroken)
+        if (TagList.Contains(other.gameObject.tag) && !isBroken)
         {
             Explosion();
             BarrelBroke();
