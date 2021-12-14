@@ -7,6 +7,8 @@ using GoogleMobileAds.Api;
 public class GoogleAds : MonoBehaviour
 {
     private InterstitialAd interstitial;
+    private RewardedAd rewardedAd;
+    
     public static GoogleAds Instance;
     void Awake()
     {

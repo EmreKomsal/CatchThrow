@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,8 @@ public class PlayerControls : MonoBehaviour
     public Touch touch;//Hand Position Lerp Speed
     [SerializeField] private int health = 3;
     [SerializeField] private NavMeshAgent agent;
+    private bool isMoving = false;
+    public bool agentOnPoint = false;
     [Header("Hand Properties")]
     public string handName; //Player's hand name
     [SerializeField] private Transform handTransform; //Player hand transform
@@ -20,7 +23,7 @@ public class PlayerControls : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Get necessary references
         controller = GameObject.FindWithTag("GameController").GetComponent<LevelController>();
         handTransform = transform.Find(handName);
         agent = GetComponent<NavMeshAgent>();
@@ -30,13 +33,10 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         MoveHand(doLerp, lerpSpeed);
-        if (!agent.hasPath)
+        if (!agent.hasPath && isMoving)//if agent has path do walking to there
         {
+            isMoving = false;
             controller.readyForEncounter = true;
-        }
-        else
-        {
-            controller.readyForEncounter = false;
         }
     }
 
@@ -92,12 +92,13 @@ public class PlayerControls : MonoBehaviour
     public void MovePlayer(Vector3 destination)
     {
         agent.SetDestination(destination);
+        isMoving = true;
     }
     
     //Rotate Player's view towards to enemy make catching arrow easy
     public void LookToEnemy(Vector3 enemyPos)
     {
-        Vector3 rotVector = enemyPos - transform.position;
+        Vector3 rotVector = enemyPos - transform.position; //Get rotation vector by referencing enemy pos to player position 
         Quaternion rotTarget = Quaternion.LookRotation(new Vector3(rotVector.x, 0,rotVector.z));
         transform.rotation = Quaternion.RotateTowards(transform.rotation, rotTarget, Time.deltaTime * 30);
     }
@@ -119,6 +120,16 @@ public class PlayerControls : MonoBehaviour
         {
             PlayerDeath(other.gameObject);
         }
+    }
+
+    public int GetHealth()
+    {
+        return health;
+    }
+
+    public void SetHealth(int desiredHealth)
+    {
+        health = desiredHealth;
     }
     
     

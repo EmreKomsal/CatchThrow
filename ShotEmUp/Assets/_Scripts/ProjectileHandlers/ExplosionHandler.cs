@@ -32,9 +32,10 @@ public class ExplosionHandler : MonoBehaviour
         {
             if (nearbyEnemy.gameObject.CompareTag("Enemy"))
             {
+                //Kill all enemies in explosion zone
                 Debug.Log(nearbyEnemy.gameObject.name);
                 EnemyProjectile enemyProjectile = nearbyEnemy.GetComponent<EnemyProjectile>();
-                enemyProjectile.Die();
+                enemyProjectile.Die(); //call kill function
             }
         }
     }
@@ -43,7 +44,7 @@ public class ExplosionHandler : MonoBehaviour
     {
         isBroken = true;
         var replacement = Instantiate(brokenObj, transform.position, transform.rotation);
-
+        //------Add instance particle in here------//
         var rbs = replacement.GetComponentsInChildren<Rigidbody>();
         foreach (var rb in rbs)
         {
