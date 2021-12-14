@@ -54,7 +54,7 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 0f;
         failCanvas.gameObject.SetActive(true);      
-        GoogleAds.Instance.CallAds();
+        GoogleAds.Instance.InterstitialCallAds();
     }
 
     public void LevelSuccess()
@@ -72,6 +72,6 @@ public class UIController : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1f;  
-        GoogleAds.Instance.CallAds();
+        GoogleAds.Instance.InterstitialCallAds();
     }
 }

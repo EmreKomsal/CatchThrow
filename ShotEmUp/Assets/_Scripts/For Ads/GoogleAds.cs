@@ -33,15 +33,15 @@ public class GoogleAds : MonoBehaviour
     public void RequestInterstitial()
     {
 #if UNITY_ANDROID
-        string adUnitId = "ca-app-pub-5875384463485278/9600515707";
+        string InterstitialadUnitId = "ca-app-pub-5875384463485278/9600515707";
 #elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-5875384463485278/2101299632";
+        string InterstitialadUnitId = "ca-app-pub-5875384463485278/2101299632";
 #else
-        string adUnitId = "unexpected_platform";
+        string InterstitialadUnitId = "unexpected_platform";
 #endif
 
         // Initialize an InterstitialAd.
-        this.interstitial = new InterstitialAd(adUnitId);
+        this.interstitial = new InterstitialAd(InterstitialadUnitId);
         
         // Create an empty ad request.
         AdRequest request = new AdRequest.Builder().Build();
@@ -59,6 +59,24 @@ public class GoogleAds : MonoBehaviour
         this.interstitial.OnAdClosed += HandleOnAdClosed;
         // Called when the ad click caused the user to leave the application.
         this.interstitial.OnAdLeavingApplication += HandleOnAdLeavingApplication;
+    }
+
+    public void RequestRewarded()
+    {
+#if UNITY_ANDROID
+        string RewardedladUnitId = "ca-app-pub-3940256099942544/5224354917";
+#elif UNITY_IPHONE
+        string RewardedadUnitId = "ca-app-pub-3940256099942544/1712485313";
+#else
+        string RewardedadUnitId = "unexpected_platform";
+#endif
+
+        this.rewardedAd = new RewardedAd(RewardedadUnitId);
+
+        AdRequest request = new AdRequest.Builder().Build();
+        this.rewardedAd.LoadAd(request);
+        
+        
     }
     
     public void HandleOnAdLoaded(object sender, EventArgs args)
@@ -89,7 +107,7 @@ public class GoogleAds : MonoBehaviour
         MonoBehaviour.print("HandleAdLeavingApplication event received");
     }
    
-    public void CallAds()
+    public void InterstitialCallAds()
     {
         RequestInterstitial();
         if (this.interstitial.IsLoaded()) {
@@ -97,6 +115,10 @@ public class GoogleAds : MonoBehaviour
         }
     }
 
+    public void RewardedCallAds()
+    {
+        //Rewarded Ad part
+    }
 
 
 }
