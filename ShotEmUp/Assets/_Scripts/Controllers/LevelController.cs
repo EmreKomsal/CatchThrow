@@ -176,7 +176,6 @@ public class LevelController : MonoBehaviour
         currentEncounter++;
         if (currentEncounter != maxEncounter)
         {
-            //encounterMenu.SetActive(false);
             SetEncounter(currentEncounter);
         }
         else
