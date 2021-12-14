@@ -32,7 +32,7 @@ public class ExplosionHandler : MonoBehaviour
             {
                 Debug.Log(nearbyEnemy.gameObject.name);
                 EnemyProjectile enemyProjectile = nearbyEnemy.GetComponent<EnemyProjectile>();
-                enemyProjectile.Die(1f);
+                enemyProjectile.Die();
             }
         }
     }

@@ -23,8 +23,6 @@ public class EnemyProjectile : MonoBehaviour
 
     public float speed;
 
-    private IEnumerator _deathCorutine;
-
     private IEnumerator _attackCorutine;
     // Start is called before the first frame update
     void Start()
@@ -48,7 +46,7 @@ public class EnemyProjectile : MonoBehaviour
             if (projectileObject.GetComponent<ProjectileMisc>().isCaught)
             {
                 Destroy(projectileObject);
-                Die(1f);
+                Die();
             }
         }
     }
@@ -67,23 +65,16 @@ public class EnemyProjectile : MonoBehaviour
         controller.ThrowProjectile(gunTip.position, playerPos, projectilePrefab, speed);
     }
 
-    public void Die(float time)
+    public void Die()
     {
         animator.SetTrigger(deathTrigger);
         canShoot = false;
-        _deathCorutine = Killself(time);
-        StartCoroutine(_deathCorutine);
+        controller.RemoveFromLists(this);
     }
 
-    IEnumerator Killself(float waitTime)
+    public void Killself()
     {
-        while (true)
-        {
-            Debug.Log("Im gonna die");
-            yield return new WaitForSeconds(waitTime);
-            Debug.Log("I died");
-            controller.RemoveFromLists(this);
-            Destroy(gameObject);
-        }
+        Debug.Log("I died");
+        Destroy(gameObject);
     }
 }

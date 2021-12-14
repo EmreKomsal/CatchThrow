@@ -44,16 +44,17 @@ public class PlayerControls : MonoBehaviour
     void MoveHand(bool _doLerp , float _lerpSpeed)
     {
         if (Input.touchCount > 0)
-        { 
+        {
             touch = Input.GetTouch(0); //Get first touch 
             
             //Check if finger still on the screen
-            if (touch.phase == TouchPhase.Stationary || touch.phase == TouchPhase.Moved)
+            if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
             {
                 //Make touch position screen position to world position
+                
                 Vector3 touchPos =
-                    Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y,
-                        handTransform.localPosition.z));
+                    Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, handTransform.localPosition.z));
+                touchPos.z = handTransform.position.z;
                 //Transform hand position slowly to desired position
                 //Use Lerping or not Lerping version
                 if (_doLerp)
@@ -68,7 +69,7 @@ public class PlayerControls : MonoBehaviour
         }
         else
         {
-            Debug.Log("Touch not found");
+            //Debug.Log("Touch not found");
         }
     }
 

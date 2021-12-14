@@ -40,7 +40,7 @@ public class LevelController : MonoBehaviour
         else
         {
             playerControls = playerObj.GetComponent<PlayerControls>();
-            hand = playerObj.transform.GetChild(0).gameObject;//Get player transform reference
+            hand = FindObjectOfType<CatchProjectile>().gameObject;
             //SetEncounter(currentEncounter);
             Debug.Log("Player Starting Properties are done");
         }
@@ -190,7 +190,6 @@ public class LevelController : MonoBehaviour
     public void GameOverHandler()
     {
         uiController.LevelFail();
-        GoogleAds.Instance.CallAds();
     }
     
 }
