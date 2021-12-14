@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ExplosionHandler : MonoBehaviour
 {
-    [Header("Tag List")] public List<string> TagList;
+    [Header("Tag List")] public List<string> TagList; //List of tags for explosive or traps activation
     
     public float radius = 5f; //Explosion Radius
     public float explosionForce = 1000f;
