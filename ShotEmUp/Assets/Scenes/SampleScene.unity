@@ -879,27 +879,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2036853986038667113, guid: 670993f481941df49aa9b6959cb76f4b,
-        type: 3}
-      propertyPath: brokenObj
-      value: 
-      objectReference: {fileID: 2036853986038667118, guid: f7b6df30bfd93eb418cdf0ae8a25a08e,
-        type: 3}
-    - target: {fileID: 2036853986038667113, guid: 670993f481941df49aa9b6959cb76f4b,
-        type: 3}
-      propertyPath: TagList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2036853986038667113, guid: 670993f481941df49aa9b6959cb76f4b,
-        type: 3}
-      propertyPath: TagList.Array.data[0]
-      value: Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2036853986038667113, guid: 670993f481941df49aa9b6959cb76f4b,
-        type: 3}
-      propertyPath: TagList.Array.data[1]
-      value: Projectile
-      objectReference: {fileID: 0}
     - target: {fileID: 2036853986038667118, guid: 670993f481941df49aa9b6959cb76f4b,
         type: 3}
       propertyPath: m_Name
@@ -2420,6 +2399,7 @@ MonoBehaviour:
   doLerp: 1
   health: 3
   agent: {fileID: 0}
+  agentOnPoint: 0
   handName: PlayerHand
   handTransform: {fileID: 0}
 --- !u!4 &1694265116
