@@ -22,7 +22,10 @@ public class ExplosionHandler : MonoBehaviour
                 Explosion();
             }
             BarrelBroke();
-            Destroy(other.gameObject);
+            if (other.gameObject.CompareTag("Projectile"))
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 
