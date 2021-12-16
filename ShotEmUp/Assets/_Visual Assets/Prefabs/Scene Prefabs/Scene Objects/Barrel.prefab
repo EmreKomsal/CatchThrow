@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b4501ceebe87a47a5c226bdf905518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isExplosive: 1
   TagList:
   - Enemy
   - Projectile

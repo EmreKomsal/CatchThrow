@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ExplosionHandler : MonoBehaviour
 {
+    public bool isExplosive;
     [Header("Tag List")] public List<string> TagList; //List of tags for explosive or traps activation
     
     public float radius = 5f; //Explosion Radius
@@ -16,7 +17,10 @@ public class ExplosionHandler : MonoBehaviour
     {
         if (TagList.Contains(other.gameObject.tag) && !isBroken)
         {
-            Explosion();
+            if (isExplosive)
+            {
+                Explosion();
+            }
             BarrelBroke();
             Destroy(other.gameObject);
         }
@@ -24,8 +28,6 @@ public class ExplosionHandler : MonoBehaviour
 
     private void Explosion()
     {
-        //Add effects here
-
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius); //Get Every collider in radius
 
         foreach (Collider nearbyEnemy in colliders)

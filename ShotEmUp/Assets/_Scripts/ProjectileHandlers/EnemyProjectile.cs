@@ -32,11 +32,6 @@ public class EnemyProjectile : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     private void OnCollisionEnter(Collision other)
     {
         //Make enemy death if projectile hits iy

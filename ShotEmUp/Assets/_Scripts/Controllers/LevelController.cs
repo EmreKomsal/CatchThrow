@@ -18,6 +18,7 @@ public class LevelController : MonoBehaviour
     public int currentEncounter = 0;
     [SerializeField] private EnemyProjectile currentEnemy;
     [SerializeField] private int maxEncounter = 3;
+    [SerializeField] private bool isLevelEnded = false;
     [SerializeField] private GameObject enemyHolder;
     [SerializeField] private List<EnemyProjectile> enemyLevelList; //All enemy at list
     [SerializeField] private List<EnemyProjectile> enemyEncounterList; //All enemy's in current encounter
@@ -174,16 +175,19 @@ public class LevelController : MonoBehaviour
     {
         Debug.Log("Get Ready for next encounter");
         currentEncounter++;
-        if (currentEncounter != maxEncounter)
-        {
-            SetEncounter(currentEncounter);
-        }
-        else
+        if (isLevelEnded)
         {
             uiController.LevelSuccess();
             Debug.Log("Get Ready for next level. This level is completed");
         }
-
+        else
+        {
+            SetEncounter(currentEncounter);
+            if (currentEncounter == maxEncounter)
+            {
+                isLevelEnded = true;
+            }
+        }
     }
 
     public void GameOverHandler()
