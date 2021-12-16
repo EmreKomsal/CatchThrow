@@ -27,9 +27,8 @@ public class GoogleAds : MonoBehaviour
         MobileAds.Initialize(initStatus => { });
         RequestInterstitial();
     }
-    
-    
 
+    #region Interstitial Ad
     public void RequestInterstitial()
     {
 #if UNITY_ANDROID
@@ -61,24 +60,7 @@ public class GoogleAds : MonoBehaviour
         this.interstitial.OnAdLeavingApplication += HandleOnAdLeavingApplication;
     }
 
-    public void RequestRewarded()
-    {
-#if UNITY_ANDROID
-        string RewardedladUnitId = "ca-app-pub-3940256099942544/5224354917";
-#elif UNITY_IPHONE
-        string RewardedadUnitId = "ca-app-pub-3940256099942544/1712485313";
-#else
-        string RewardedadUnitId = "unexpected_platform";
-#endif
-
-        this.rewardedAd = new RewardedAd(RewardedadUnitId);
-
-        AdRequest request = new AdRequest.Builder().Build();
-        this.rewardedAd.LoadAd(request);
-        
-        
-    }
-    
+    #region Interstitial Ad Events
     public void HandleOnAdLoaded(object sender, EventArgs args)
     {
         MonoBehaviour.print("HandleAdLoaded event received");
@@ -106,7 +88,8 @@ public class GoogleAds : MonoBehaviour
     {
         MonoBehaviour.print("HandleAdLeavingApplication event received");
     }
-   
+   #endregion
+    
     public void InterstitialCallAds()
     {
         RequestInterstitial();
@@ -114,11 +97,75 @@ public class GoogleAds : MonoBehaviour
             this.interstitial.Show();
         }
     }
+    #endregion
 
-    public void RewardedCallAds()
+    #region Rewarded Ad
+    public void RequestRewarded()
     {
-        //Rewarded Ad part
+#if UNITY_ANDROID
+        string RewardedladUnitId = "ca-app-pub-3940256099942544/5224354917";
+#elif UNITY_IPHONE
+        string RewardedadUnitId = "ca-app-pub-3940256099942544/1712485313";
+#else
+        string RewardedadUnitId = "unexpected_platform";
+#endif
+
+        this.rewardedAd = new RewardedAd(RewardedadUnitId);
+
+        // Called when an ad request has successfully loaded.
+        this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
+        // Called when an ad request failed to load.
+        this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
+        // Called when an ad is shown.
+        this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
+        // Called when an ad request failed to show.
+        this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
+        // Called when the user should be rewarded for interacting with the ad.
+        this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+        // Called when the ad is closed.
+        this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+
+        AdRequest request = new AdRequest.Builder().Build();
+        this.rewardedAd.LoadAd(request);
     }
 
+    private void HandleRewardedAdClosed(object sender, EventArgs e)
+    {
+        MonoBehaviour.print("HandleRewardedAdClosed");
+    }
 
+    private void HandleUserEarnedReward(object sender, Reward e)
+    {
+        MonoBehaviour.print("HandleUserEarnedReward event received");
+        //Give Reward to player
+    }
+
+    private void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs e)
+    {
+        MonoBehaviour.print("HandleRewardedAdFailedToShow event received with message: " + e.Message);
+    }
+
+    private void HandleRewardedAdOpening(object sender, EventArgs e)
+    {
+        MonoBehaviour.print("HandeRewardedAdOpening event received");
+    }
+
+    private void HandleRewardedAdFailedToLoad(object sender, AdErrorEventArgs e)
+    {
+        MonoBehaviour.print("HandleRewardedAdFailedToLoad event received with message:" + e.Message);
+    }
+
+    private void HandleRewardedAdLoaded(object sender, EventArgs e)
+    {
+        MonoBehaviour.print("HandleRewardedAdLoaded event received");
+    }
+    
+    public void RewardedCallAds()
+    {
+        if (this.rewardedAd.IsLoaded())
+        {
+            this.rewardedAd.Show();
+        }
+    }
+    #endregion
 }
