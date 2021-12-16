@@ -12,6 +12,7 @@ public class ExplosionHandler : MonoBehaviour
     public float explosionForce = 1000f;
 
     public GameObject brokenObj;
+    public GameObject particleObj;
     private bool isBroken = false;
     private void OnCollisionEnter(Collision other)
     {
@@ -49,7 +50,11 @@ public class ExplosionHandler : MonoBehaviour
     {
         isBroken = true;
         var replacement = Instantiate(brokenObj, transform.position, transform.rotation);
-        //------Add instance particle in here------//
+        if (particleObj != null)
+        {
+            var bombEffect = Instantiate(particleObj, replacement.transform);
+            bombEffect.GetComponent<ParticleSystem>().Play();
+        }
         var rbs = replacement.GetComponentsInChildren<Rigidbody>();
         foreach (var rb in rbs)
         {

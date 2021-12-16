@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1338461734415134690}
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0.10553641, y: 2.181158, z: -0.12716255}
   m_LocalScale: {x: 147.3901, y: 147.3901, z: 219.1135}
   m_Children: []
   m_Father: {fileID: 7987358163400069482}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 593684664}
   m_Layer: 7
   m_Name: Barrel
-  m_TagString: Obstacle
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,15 +145,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6b4501ceebe87a47a5c226bdf905518, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isExplosive: 1
   TagList:
   - Enemy
   - Projectile
   radius: 5
   explosionForce: 700
   brokenObj: {fileID: 2036853986038667118, guid: f7b6df30bfd93eb418cdf0ae8a25a08e,
-    type: 3}
-  particleObj: {fileID: 1324124168371050, guid: 9eb3b1a11c610cd418079f132e291197,
     type: 3}
 --- !u!208 &593684664
 NavMeshObstacle:
