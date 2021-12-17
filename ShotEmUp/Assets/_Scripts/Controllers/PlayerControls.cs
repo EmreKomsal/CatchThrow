@@ -9,7 +9,7 @@ public class PlayerControls : MonoBehaviour
 {
     [Header("General Properties")] 
     [SerializeField] private LevelController controller;
-    public float lerpSpeed = 10f; //Hand Position Lerp Speed
+    public float speed = 0.0001f; //Hand Position Lerp Speed
     public bool doLerp = true;
     public Touch touch;//Hand Position Lerp Speed
     [SerializeField] private int health = 3;
@@ -32,7 +32,7 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveHand(doLerp, lerpSpeed);
+        MoveHand(doLerp, speed);
         if (!agent.hasPath && isMoving)//if agent has path do walking to there
         {
             isMoving = false;
@@ -41,30 +41,25 @@ public class PlayerControls : MonoBehaviour
     }
 
     //In this function hand position controlled
-    void MoveHand(bool _doLerp , float _lerpSpeed)
+    void MoveHand(bool _doLerp , float _speed)
     {
         if (Input.touchCount > 0)
         {
             touch = Input.GetTouch(0); //Get first touch 
             
             //Check if finger still on the screen
-            if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
+            if (touch.phase == TouchPhase.Moved)
             {
-                //Make touch position screen position to world position
-                
+                handTransform.position = new Vector3(handTransform.position.x + touch.deltaPosition.x * _speed * Time.deltaTime,
+                    handTransform.position.y + touch.deltaPosition.y * _speed * Time.deltaTime,
+                    handTransform.position.z);
+            }
+            else if (touch.phase == TouchPhase.Began)
+            {
                 Vector3 touchPos =
                     Camera.main.ScreenToWorldPoint(new Vector3(touch.position.x, touch.position.y, handTransform.localPosition.z));
                 touchPos.z = handTransform.position.z;
-                //Transform hand position slowly to desired position
-                //Use Lerping or not Lerping version
-                if (_doLerp)
-                {
-                    handTransform.position = Vector3.Lerp(handTransform.position, touchPos, Time.deltaTime * _lerpSpeed);
-                }
-                else
-                {
-                    handTransform.position = touchPos;
-                }
+                handTransform.position = touchPos;
             }
         }
         else

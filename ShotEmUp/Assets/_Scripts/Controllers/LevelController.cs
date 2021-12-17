@@ -154,6 +154,7 @@ public class LevelController : MonoBehaviour
                     }
                     currentEnemy = selectedEnemy;
                     Vector3 playerPos = playerObj.transform.position;
+                    playerPos.y += 0.4f;
                     currentEnemy.AttackToPlayer(playerPos);
                     enemyTimer = Random.Range(enemyTimerMin, enemyTimerMax);
                 }

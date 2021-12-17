@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CatchProjectile : MonoBehaviour
 {
@@ -11,6 +12,11 @@ public class CatchProjectile : MonoBehaviour
     private TouchPhase touchPhase;
     public float throwSpeed;
     public LayerMask layerMask;
+
+    public Transform DebugSphere;
+    public RectTransform crosshairPos;
+    public Image crosshairImage;
+    public Transform crosshairWorld;
 
     //Player's hand animations
     [SerializeField] private Animator animator;
@@ -34,6 +40,15 @@ public class CatchProjectile : MonoBehaviour
                 Throw(catchedObject);
             }
         }
+        else
+        {
+            DebugSphere.position = Aim().point;
+        }
+    }
+
+    private void LateUpdate()
+    {
+        crosshairPos.position = Camera.main.WorldToScreenPoint(crosshairWorld.position);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -57,6 +72,7 @@ public class CatchProjectile : MonoBehaviour
         projectileTransform.GetComponent<Collider>().enabled = false;
         projectileTransform.parent = transform;
         projectileTransform.localPosition = Vector3.zero;
+        crosshairImage.gameObject.SetActive(true);
     }
 
     private void Throw(Transform projectileTransform)
@@ -66,8 +82,7 @@ public class CatchProjectile : MonoBehaviour
         Rigidbody prRigidbody = projectileTransform.GetComponent<Rigidbody>();
         prRigidbody.isKinematic = false;
         catchedObject.parent = null;
-        Ray ray = Camera.main.ScreenPointToRay(playerControls.touch.position);
-        Physics.Raycast(ray, out RaycastHit hitInfo, 999, layerMask);
+        RaycastHit hitInfo = Aim();
         if (hitInfo.transform == null)
         {
             hitInfo.point = Vector3.forward * 999;
@@ -75,5 +90,13 @@ public class CatchProjectile : MonoBehaviour
         //Make something for not found enemy situation
         controller.ThrowProjectile(transform.position, hitInfo.point ,catchedObject.gameObject, throwSpeed, false);
         catchedObject = null;
+        crosshairImage.gameObject.SetActive(false);
+    }
+
+    private RaycastHit Aim()
+    {
+        Ray ray = Camera.main.ScreenPointToRay(crosshairPos.position);
+        Physics.Raycast(ray, out RaycastHit hitInfo, 999, layerMask);
+        return hitInfo;
     }
 }

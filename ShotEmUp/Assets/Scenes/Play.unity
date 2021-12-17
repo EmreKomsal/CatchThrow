@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -482,6 +482,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level_Complete(Canvas)
       objectReference: {fileID: 0}
+    - target: {fileID: 1341883895384890634, guid: 7a63c28eeb2478c43ba81092d8b5a539,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a63c28eeb2478c43ba81092d8b5a539, type: 3}
 --- !u!1001 &4020128410565158851
@@ -495,6 +500,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Settings(Canvas)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020128408950596023, guid: 8aaf0f150768e48488f2d56710869196,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4020128408950596027, guid: 8aaf0f150768e48488f2d56710869196,
         type: 3}
@@ -719,6 +729,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Fail(Canvas)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6936631043416552160, guid: d57afe884e90df34b99fad6646d99be6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d57afe884e90df34b99fad6646d99be6, type: 3}
