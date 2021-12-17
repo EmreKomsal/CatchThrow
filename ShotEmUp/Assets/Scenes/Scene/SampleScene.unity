@@ -2177,7 +2177,7 @@ PrefabInstance:
     - target: {fileID: 1341883896119943037, guid: 7a63c28eeb2478c43ba81092d8b5a539,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: WatchRewardedAd
+      value: WatchToMoreReward
       objectReference: {fileID: 0}
     - target: {fileID: 1341883896119943037, guid: 7a63c28eeb2478c43ba81092d8b5a539,
         type: 3}
@@ -2738,7 +2738,7 @@ PrefabInstance:
     - target: {fileID: 6936631044906683361, guid: d57afe884e90df34b99fad6646d99be6,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: WatchRewardedAd
+      value: WatchToResume
       objectReference: {fileID: 0}
     - target: {fileID: 6936631044906683361, guid: d57afe884e90df34b99fad6646d99be6,
         type: 3}

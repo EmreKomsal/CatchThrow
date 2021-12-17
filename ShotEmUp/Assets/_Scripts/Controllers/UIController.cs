@@ -75,10 +75,18 @@ public class UIController : MonoBehaviour
         GoogleAds.Instance.InterstitialCallAds();
     }
 
-    public void WatchRewardedAd()
+    public void WatchToResume()
     {
-        GoogleAds.Instance.RewardedCallAds();
-        Debug.Log("Rewarded Ad Called");
+        GoogleAds.Instance.ResumeRewardedAd();
+        Debug.Log("Resume rewarded Ad Called");
+        failCanvas.transform.GetChild(2).gameObject.SetActive(false);//Close resume button for next time
+    }
+
+    public void WatchToMoreReward()
+    {
+        GoogleAds.Instance.LevelEndRewardedAd();
+        Debug.Log("x3 rewarded Ad Called");
+        levelCompleteCanvas.transform.GetChild(2).gameObject.SetActive(false);//Close resume button for next time
     }
 
     public void ResumeGame()

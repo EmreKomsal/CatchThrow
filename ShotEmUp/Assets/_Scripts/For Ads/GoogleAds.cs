@@ -13,8 +13,9 @@ public class GoogleAds : MonoBehaviour
     private LevelController controller;
     
     private InterstitialAd interstitial;
-    private RewardedAd rewardedAd;
-    private List<RewardedAd> rewardedAds; 
+    private RewardedAd resumeRewardedAd;
+    private RewardedAd levelEndRewardedAd;
+
 
     public static GoogleAds Instance;
     void Awake()
@@ -38,8 +39,9 @@ public class GoogleAds : MonoBehaviour
         //Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(initStatus => { });
         RequestInterstitial();
-        
-        RequestRewarded();
+
+        this.resumeRewardedAd = RequestRewarded();
+        this.levelEndRewardedAd = RequestRewarded();
     }
 
     #region Interstitial Ad
@@ -114,7 +116,7 @@ public class GoogleAds : MonoBehaviour
     #endregion
 
     #region Rewarded Ad
-    public void RequestRewarded()
+    public RewardedAd RequestRewarded()
     {
 #if UNITY_ANDROID
         string RewardedladUnitId = "ca-app-pub-3940256099942544/5224354917";
@@ -123,23 +125,24 @@ public class GoogleAds : MonoBehaviour
 #else
         string RewardedadUnitId = "unexpected_platform";
 #endif
-
-        this.rewardedAd = new RewardedAd(RewardedadUnitId);
+        RewardedAd rewardedAd = new RewardedAd(RewardedadUnitId);
 
         // Called when an ad request has successfully loaded.
-        this.rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
+        rewardedAd.OnAdLoaded += HandleRewardedAdLoaded;
         // Called when an ad request failed to load.
-        this.rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
+        rewardedAd.OnAdFailedToLoad += HandleRewardedAdFailedToLoad;
         // Called when an ad is shown.
-        this.rewardedAd.OnAdOpening += HandleRewardedAdOpening;
+        rewardedAd.OnAdOpening += HandleRewardedAdOpening;
         // Called when an ad request failed to show.
-        this.rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
+        rewardedAd.OnAdFailedToShow += HandleRewardedAdFailedToShow;
         // Called when the user should be rewarded for interacting with the ad.
-        this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
+        rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
         // Called when the ad is closed.
-        this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
+        rewardedAd.OnAdClosed += HandleRewardedAdClosed;
         
-        this.rewardedAd.LoadAd(CreateAdRequest());
+        rewardedAd.LoadAd(CreateAdRequest());
+
+        return rewardedAd;
     }
 
     private void HandleRewardedAdClosed(object sender, EventArgs e)
@@ -181,12 +184,21 @@ public class GoogleAds : MonoBehaviour
         MonoBehaviour.print("HandleRewardedAdLoaded event received");
     }
     
-    public void RewardedCallAds()
+    public void ResumeRewardedAd()
     {
-        if (this.rewardedAd.IsLoaded())
+        if (this.resumeRewardedAd.IsLoaded())
         {
-            this.rewardedAd.Show();
+            this.resumeRewardedAd.Show();
         }
+    }
+
+    public void LevelEndRewardedAd()
+    {
+        if (this.levelEndRewardedAd.IsLoaded())
+        {
+            this.levelEndRewardedAd.Show();
+        }
+        Debug.Log(levelEndRewardedAd.GetRewardItem());
     }
     #endregion
 
