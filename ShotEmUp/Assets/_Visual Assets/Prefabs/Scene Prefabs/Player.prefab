@@ -193,13 +193,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8ee68e1f4641342a3caebd43e5ec23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 0}
+  controller: {fileID: 0}
   catchedObject: {fileID: 0}
-  _playerControls: {fileID: 6608453802588220004}
+  playerControls: {fileID: 0}
   throwSpeed: 10
   layerMask:
     serializedVersion: 2
     m_Bits: 640
+  animator: {fileID: 0}
+  catchTrigger: Catch
+  throwTrigger: Attack
 --- !u!1 &6608453802588220005
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,11 +250,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d691525509447f14caa98ac53dcb297f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _controller: {fileID: 0}
+  controller: {fileID: 0}
   lerpSpeed: 10
   doLerp: 1
   health: 3
-  _agent: {fileID: 6608453802588220001}
+  agent: {fileID: 0}
+  agentOnPoint: 0
   handName: PlayerHand
   handTransform: {fileID: 0}
 --- !u!65 &6608453802588220002
@@ -371,6 +375,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: hand_normal
       objectReference: {fileID: 0}
+    - target: {fileID: 5086144711388624740, guid: d6a90bc6ec69a26438dfa58f208fb981,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 50642fba7b8fefe44ac16170970ba776, type: 2}
     - target: {fileID: 5086144711388624740, guid: d6a90bc6ec69a26438dfa58f208fb981,
         type: 3}
       propertyPath: m_Materials.Array.data[1]

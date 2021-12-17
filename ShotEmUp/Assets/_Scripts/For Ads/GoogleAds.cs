@@ -3,15 +3,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 
 public class GoogleAds : MonoBehaviour
 {
+    public int playerHealth = 3;
+    
+    private LevelController controller;
+    
     private InterstitialAd interstitial;
     private RewardedAd rewardedAd;
-    
+    private List<RewardedAd> rewardedAds; 
+
     public static GoogleAds Instance;
     void Awake()
     {
+        controller = FindObjectOfType<LevelController>();
+        if (controller == null)
+        {
+            Debug.LogError("Level controller does not found");
+        }
         if (Instance == null)
         {
             Instance = this;
@@ -26,6 +38,8 @@ public class GoogleAds : MonoBehaviour
         //Initialize the Google Mobile Ads SDK.
         MobileAds.Initialize(initStatus => { });
         RequestInterstitial();
+        
+        RequestRewarded();
     }
 
     #region Interstitial Ad
@@ -124,9 +138,8 @@ public class GoogleAds : MonoBehaviour
         this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;
         // Called when the ad is closed.
         this.rewardedAd.OnAdClosed += HandleRewardedAdClosed;
-
-        AdRequest request = new AdRequest.Builder().Build();
-        this.rewardedAd.LoadAd(request);
+        
+        this.rewardedAd.LoadAd(CreateAdRequest());
     }
 
     private void HandleRewardedAdClosed(object sender, EventArgs e)
@@ -137,7 +150,15 @@ public class GoogleAds : MonoBehaviour
     private void HandleUserEarnedReward(object sender, Reward e)
     {
         MonoBehaviour.print("HandleUserEarnedReward event received");
-        //Give Reward to player
+        if (!controller.LevelEndCheck())//Resume Game
+        {
+            controller.readyForEncounter = true;
+            controller.RewardResume(playerHealth);
+        }
+        else if (controller.LevelEndCheck())//3x Reward
+        {
+            //Reward three times
+        }
     }
 
     private void HandleRewardedAdFailedToShow(object sender, AdErrorEventArgs e)
@@ -168,4 +189,13 @@ public class GoogleAds : MonoBehaviour
         }
     }
     #endregion
+
+
+    private AdRequest CreateAdRequest()
+    {
+        return new AdRequest.Builder()
+            .AddKeyword("unity-admob")
+            .Build();
+
+    }
 }

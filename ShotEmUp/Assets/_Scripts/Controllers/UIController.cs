@@ -30,7 +30,7 @@ public class UIController : MonoBehaviour
     
     public void StartLevel()
     {
-        controller.SetEncounter(controller.currentEncounter);
+        controller.NextEncounter();
         levelStarted = true;
         startButton.gameObject.SetActive(false);
         adButton.gameObject.SetActive(false);
@@ -73,5 +73,16 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1f;  
         GoogleAds.Instance.InterstitialCallAds();
+    }
+
+    public void WatchRewardedAd()
+    {
+        GoogleAds.Instance.RewardedCallAds();
+        Debug.Log("Rewarded Ad Called");
+    }
+
+    public void ResumeGame()
+    {
+        failCanvas.gameObject.SetActive(false);
     }
 }

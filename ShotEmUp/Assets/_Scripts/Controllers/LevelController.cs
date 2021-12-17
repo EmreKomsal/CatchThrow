@@ -18,7 +18,7 @@ public class LevelController : MonoBehaviour
     public int currentEncounter = 0;
     [SerializeField] private EnemyProjectile currentEnemy;
     [SerializeField] private int maxEncounter = 3;
-    [SerializeField] private bool isLevelEnded = false;
+    [SerializeField] private bool isLevelEnded = false; //
     [SerializeField] private GameObject enemyHolder;
     [SerializeField] private List<EnemyProjectile> enemyLevelList; //All enemy at list
     [SerializeField] private List<EnemyProjectile> enemyEncounterList; //All enemy's in current encounter
@@ -84,20 +84,27 @@ public class LevelController : MonoBehaviour
         }
     }
     //Finds enemy's in encounter
-    private void EnemyEncounterLister(int encounterNumber)
+    private void EnemyEncounterLister()
     {
         enemyEncounterList.Clear(); //Make list empty for new encounter
         foreach (EnemyProjectile enemy in enemyLevelList)
         {
-            if (enemy.enemyEncounterNumber == encounterNumber)
+            if (enemy.enemyEncounterNumber == currentEncounter)
             {
-                enemyEncounterList.Add(enemy);//Add enemy to current encounter list if it is in desired encounter
+                if (enemy != null)
+                {
+                    enemyEncounterList.Add(enemy);//Add enemy to current encounter list if it is in desired encounter
+                }
             }
         }
     }
 
     public void RemoveFromLists(EnemyProjectile target)
     {
+        if (enemyLevelList.Contains(target))
+        {
+            enemyLevelList.Remove(target);
+        }
         if (enemyEncounterList.Contains(target))
         {
             enemyEncounterList.Remove(target);
@@ -113,11 +120,10 @@ public class LevelController : MonoBehaviour
 
     public void SetEncounter(int encounterValues)
     {
-        EnemyEncounterLister(encounterValues);
         currentEnemy = enemyEncounterList[enemyEncounterList.Count / 2];
         Debug.Log("Hello");
         playerControls.MovePlayer(playerPositions[encounterValues]); //Get player on desired location and rotation
-        enemyTimer = Random.Range(enemyTimerMin, enemyTimerMax);
+        enemyTimer = Random.Range(0, 1);
     }
 
     //Create basic enemy AI for encounter
@@ -174,26 +180,47 @@ public class LevelController : MonoBehaviour
     public void NextEncounter()
     {
         Debug.Log("Get Ready for next encounter");
-        currentEncounter++;
-        if (isLevelEnded)
+        if (enemyLevelList.Count == 0)
         {
             uiController.LevelSuccess();
             Debug.Log("Get Ready for next level. This level is completed");
         }
         else
         {
+            while (enemyEncounterList.Count == 0)
+            {
+                EnemyEncounterLister();
+                if (enemyEncounterList.Count != 0)
+                {
+                    break;
+                }
+                currentEncounter++;
+            }
             SetEncounter(currentEncounter);
             if (currentEncounter == maxEncounter)
             {
                 isLevelEnded = true;
             }
+            currentEncounter++;
         }
     }
+    
 
     public void GameOverHandler()
     {
         uiController.LevelFail();
         readyForEncounter = false;
+    }
+
+    public void RewardResume(int healthAmount)
+    {
+        playerControls.SetHealth(healthAmount);
+        uiController.ResumeGame();
+    }
+
+    public bool LevelEndCheck()
+    {
+        return isLevelEnded;
     }
     
 }
