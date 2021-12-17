@@ -1264,6 +1264,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: hand_normal
       objectReference: {fileID: 0}
+    - target: {fileID: 5086144711388624740, guid: d6a90bc6ec69a26438dfa58f208fb981,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 50642fba7b8fefe44ac16170970ba776, type: 2}
+    - target: {fileID: 5086144711388624740, guid: d6a90bc6ec69a26438dfa58f208fb981,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7cd40c4a710bf0c49b3647f489c75fbf, type: 2}
     - target: {fileID: 5866666021909216657, guid: d6a90bc6ec69a26438dfa58f208fb981,
         type: 3}
       propertyPath: m_Controller
