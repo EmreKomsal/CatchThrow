@@ -40,7 +40,7 @@ public class CatchProjectile : MonoBehaviour
                 Throw(catchedObject);
             }
         }
-        else
+        else if(DebugSphere != null)
         {
             DebugSphere.position = Aim().point;
         }
