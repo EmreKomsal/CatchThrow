@@ -119,7 +119,7 @@ public class GoogleAds : MonoBehaviour
     public RewardedAd RequestRewarded()
     {
 #if UNITY_ANDROID
-        string RewardedladUnitId = "ca-app-pub-3940256099942544/5224354917";
+        string RewardedadUnitId = "ca-app-pub-3940256099942544/5224354917";
 #elif UNITY_IPHONE
         string RewardedadUnitId = "ca-app-pub-3940256099942544/1712485313";
 #else
