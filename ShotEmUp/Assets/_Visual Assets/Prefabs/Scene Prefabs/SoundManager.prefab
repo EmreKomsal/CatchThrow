@@ -560,8 +560,8 @@ MonoBehaviour:
   enemyDieSound: {fileID: 6555664475161634213}
   enemyArrowThrowingSound: {fileID: 6882376192280774463}
   playerArrowThrowingSound: {fileID: 9129122502625480250}
-  playerArrowCatchSound: {fileID: 0}
-  playerDieSound: {fileID: 0}
+  playerArrowCatchSound: {fileID: 2339405123143854147}
+  playerDieSound: {fileID: 6302131654476367896}
   boxBreakingSound: {fileID: 4342782164551333141}
   lostSound: {fileID: 6302131654476367896}
 --- !u!1 &9059391245541346414
