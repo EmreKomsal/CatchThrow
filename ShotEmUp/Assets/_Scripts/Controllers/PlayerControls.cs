@@ -104,6 +104,8 @@ public class PlayerControls : MonoBehaviour
         if (!HealthCheck())
         {
             controller.GameOverHandler();
+            // gonna move to the level controller
+            SoundManager.Instance.PlayPlayerSound(SoundManager.PlayerSoundTypes.PlayerDieSound);
         }
         Destroy(projectile);
     }

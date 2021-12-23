@@ -73,6 +73,7 @@ public class CatchProjectile : MonoBehaviour
         projectileTransform.parent = transform;
         projectileTransform.localPosition = Vector3.zero;
         crosshairImage.gameObject.SetActive(true);
+        SoundManager.Instance.PlayPlayerSound(SoundManager.PlayerSoundTypes.PlayerArrowCatchSound);
     }
 
     private void Throw(Transform projectileTransform)
@@ -91,6 +92,7 @@ public class CatchProjectile : MonoBehaviour
         controller.ThrowProjectile(transform.position, hitInfo.point ,catchedObject.gameObject, throwSpeed, false);
         catchedObject = null;
         crosshairImage.gameObject.SetActive(false);
+        SoundManager.Instance.PlayPlayerSound(SoundManager.PlayerSoundTypes.PlayerArrowThrowingSound);
     }
 
     private RaycastHit Aim()
