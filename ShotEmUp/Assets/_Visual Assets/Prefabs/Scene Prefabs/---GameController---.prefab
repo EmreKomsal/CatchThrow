@@ -46,16 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 0}
   playerControls: {fileID: 0}
-  playerPositions:
-  - {x: 0, y: 0, z: -5}
-  - {x: 0, y: 0, z: 5}
-  - {x: 0, y: 0, z: 22}
-  - {x: 5, y: 0, z: 25}
+  playerPositionHolder: {fileID: 0}
+  playerPositions: []
   readyForEncounter: 0
   hand: {fileID: 0}
   currentEncounter: 0
   currentEnemy: {fileID: 0}
-  maxEncounter: 4
+  isLevelEnded: 0
   enemyHolder: {fileID: 0}
   enemyLevelList: []
   enemyEncounterList: []

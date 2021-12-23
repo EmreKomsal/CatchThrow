@@ -49,7 +49,7 @@ public class LevelController : MonoBehaviour
         enemyTimer = Random.Range(enemyTimerMin, enemyTimerMax);
         for (int i = 0; i < playerPositionHolder.childCount; i++)
         {
-            playerPositions.Add();
+            playerPositions.Add(playerPositionHolder.GetChild(i).transform.position);
         }
     }
 
@@ -126,7 +126,7 @@ public class LevelController : MonoBehaviour
     {
         currentEnemy = enemyEncounterList[enemyEncounterList.Count / 2];
         Debug.Log("Hello");
-        Vector3 playerPos = playerPositions[currentEncounter].position;
+        Vector3 playerPos = playerPositions[currentEncounter];
         playerControls.MovePlayer(playerPos); //Get player on desired location and rotation
         enemyTimer = Random.Range(0, 1);
     }

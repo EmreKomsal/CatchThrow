@@ -621,6 +621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObj: {fileID: 5033213043462930810}
   playerControls: {fileID: 0}
+  playerPositionHolder: {fileID: 5033213044410084679}
   playerPositions: []
   readyForEncounter: 0
   hand: {fileID: 0}
