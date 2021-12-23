@@ -1622,7 +1622,7 @@ PrefabInstance:
     - target: {fileID: 6984612106335293842, guid: 1bb805ca0414f554092fc2a883b84b3a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -156.34
+      value: -157.38
       objectReference: {fileID: 0}
     - target: {fileID: 6984612106335293842, guid: 1bb805ca0414f554092fc2a883b84b3a,
         type: 3}
@@ -1852,6 +1852,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
         type: 3}
+      propertyPath: EnemyHealth
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
+        type: 3}
       propertyPath: enemyEncounterNumber
       value: 0
       objectReference: {fileID: 0}
@@ -1915,6 +1920,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyPrototype (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3492044637206291591, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 286bb3bc11189460b94bff3d4bed399a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fed7059ab179f64f8cfdfbc86d55e3d, type: 3}
 --- !u!4 &1916015875 stripped

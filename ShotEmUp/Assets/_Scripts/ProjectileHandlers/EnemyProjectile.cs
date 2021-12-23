@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class EnemyProjectile : MonoBehaviour
 {
+    public int EnemyHealth = 1;
+    
     public Transform gunTip;
 
     public GameObject projectilePrefab;
@@ -20,6 +22,7 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string attackTrigger = "Attack";
     [SerializeField] private string deathTrigger = "Die";
+    [SerializeField] private string damageTrigger = "Damage";
 
     public float speed;
 
@@ -34,15 +37,22 @@ public class EnemyProjectile : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        //Make enemy death if projectile hits iy
+        //Make enemy death if projectile hits it
         if (other.gameObject.CompareTag("Projectile"))
         {
             GameObject projectileObject = other.gameObject;
             if (projectileObject.GetComponent<ProjectileMisc>().isCaught)
             {
+                EnemyHealth--;
                 Destroy(projectileObject);
-                SoundManager.Instance.PlayEnemySound(SoundManager.EnemySoundTypes.EnemyDieSound);
-                Die();
+                if (EnemyHealth <= 0)
+                {
+                    Die();
+                }
+                else
+                {
+                    animator.SetTrigger(damageTrigger);
+                }
             }
         }
     }
@@ -65,6 +75,7 @@ public class EnemyProjectile : MonoBehaviour
     public void Die()
     {
         animator.SetTrigger(deathTrigger);
+        SoundManager.Instance.PlayEnemySound(SoundManager.EnemySoundTypes.EnemyDieSound);
         canShoot = false;
         controller.RemoveFromLists(this);
     }
