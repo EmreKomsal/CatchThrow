@@ -41,6 +41,7 @@ public class EnemyProjectile : MonoBehaviour
             if (projectileObject.GetComponent<ProjectileMisc>().isCaught)
             {
                 Destroy(projectileObject);
+                SoundManager.Instance.PlayEnemySound(SoundManager.EnemySoundTypes.EnemyDieSound);
                 Die();
             }
         }
@@ -58,6 +59,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         controller.ThrowProjectile(gunTip.position, playerPos, projectilePrefab, speed);
+        SoundManager.Instance.PlayEnemySound(SoundManager.EnemySoundTypes.EnemyArrowThrowingSound);
     }
 
     public void Die()
