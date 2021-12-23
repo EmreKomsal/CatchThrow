@@ -86,7 +86,7 @@ public class PlayerControls : MonoBehaviour
 
     public void MovePlayer(Vector3 destination)
     {
-        agent.SetDestination(destination);
+        agent.destination = destination;
         isMoving = true;
     }
     

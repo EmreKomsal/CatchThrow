@@ -9,7 +9,9 @@ public class LevelController : MonoBehaviour
     [Header("Player Properties")] 
     public GameObject playerObj; //Player's GameObject
     [SerializeField] private PlayerControls playerControls; //Player's Transform easy calling
+    [SerializeField] private Transform playerPositionHolder;
     [SerializeField] private List<Vector3> playerPositions; //Player's Desired Location in Start of Game
+    
     public bool readyForEncounter = false;
     [Header("Hand Properties")] 
     [SerializeField] private GameObject hand; //Player Hand
@@ -17,7 +19,6 @@ public class LevelController : MonoBehaviour
     [Header("Enemy Properties")] 
     public int currentEncounter = 0;
     [SerializeField] private EnemyProjectile currentEnemy;
-    [SerializeField] private int maxEncounter = 3;
     [SerializeField] private bool isLevelEnded = false; //
     [SerializeField] private GameObject enemyHolder;
     [SerializeField] private List<EnemyProjectile> enemyLevelList; //All enemy at list
@@ -46,7 +47,10 @@ public class LevelController : MonoBehaviour
             Debug.Log("Player Starting Properties are done");
         }
         enemyTimer = Random.Range(enemyTimerMin, enemyTimerMax);
-        //encounterText = encounterMenu.GetComponentInChildren<Text>();
+        for (int i = 0; i < playerPositionHolder.childCount; i++)
+        {
+            playerPositions.Add();
+        }
     }
 
     public void Update()
@@ -118,11 +122,12 @@ public class LevelController : MonoBehaviour
         }
     }
 
-    public void SetEncounter(int encounterValues)
+    public void SetEncounter()
     {
         currentEnemy = enemyEncounterList[enemyEncounterList.Count / 2];
         Debug.Log("Hello");
-        playerControls.MovePlayer(playerPositions[encounterValues]); //Get player on desired location and rotation
+        Vector3 playerPos = playerPositions[currentEncounter].position;
+        playerControls.MovePlayer(playerPos); //Get player on desired location and rotation
         enemyTimer = Random.Range(0, 1);
     }
 
@@ -197,8 +202,8 @@ public class LevelController : MonoBehaviour
                 }
                 currentEncounter++;
             }
-            SetEncounter(currentEncounter);
-            if (currentEncounter == maxEncounter)
+            SetEncounter();
+            if (enemyLevelList.Count <= 0)
             {
                 isLevelEnded = true;
             }
