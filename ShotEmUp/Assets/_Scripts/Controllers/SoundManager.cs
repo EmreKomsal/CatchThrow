@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour
     public AudioSource enemyArrowThrowingSound;
    
     public AudioSource playerArrowThrowingSound;
-    public AudioSource playerArrowCatchSound;
+    //public AudioSource playerArrowCatchSound;
     public AudioSource playerDieSound;
     public AudioSource boxBreakingSound;
     
@@ -54,9 +54,11 @@ public class SoundManager : MonoBehaviour
             case PlayerSoundTypes.PlayerArrowThrowingSound:
                 playerArrowThrowingSound.Play();
                 break;
+            /*
             case PlayerSoundTypes.PlayerArrowCatchSound:
                 playerArrowCatchSound.Play();
                 break;
+            */
             case PlayerSoundTypes.PlayerDieSound:
                 playerDieSound.Play();
                 break;
