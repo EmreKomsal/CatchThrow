@@ -24,7 +24,7 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] private string deathTrigger = "Die";
     [SerializeField] private string damageTrigger = "Damage";
 
-    public float speed;
+    public float projectile_speed;
 
     private IEnumerator _attackCorutine;
     // Start is called before the first frame update
@@ -68,7 +68,7 @@ public class EnemyProjectile : MonoBehaviour
     IEnumerator AttackCoroutine(float waitTime, Vector3 playerPos)
     {
         yield return new WaitForSeconds(waitTime);
-        controller.ThrowProjectile(gunTip.position, playerPos, projectilePrefab, speed);
+        controller.ThrowProjectile(gunTip.position, playerPos, projectilePrefab, projectile_speed);
         SoundManager.Instance.PlayEnemySound(SoundManager.EnemySoundTypes.EnemyArrowThrowingSound);
     }
 
