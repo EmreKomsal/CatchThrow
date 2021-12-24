@@ -114,6 +114,7 @@ public class PlayerControls : MonoBehaviour
         if (other.gameObject.CompareTag("Projectile"))
         {
             PlayerDeath(other.gameObject);
+            SoundManager.Instance.PlayPlayerSound(SoundManager.PlayerSoundTypes.PlayerDieSound);
         }
     }
 
