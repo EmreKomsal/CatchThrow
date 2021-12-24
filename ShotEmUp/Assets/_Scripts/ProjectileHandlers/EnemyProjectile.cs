@@ -24,7 +24,7 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] private string deathTrigger = "Die";
     [SerializeField] private string damageTrigger = "Damage";
 
-    public float projectile_speed;
+    public float projectile_speed = 5;
 
     private IEnumerator _attackCorutine;
     // Start is called before the first frame update

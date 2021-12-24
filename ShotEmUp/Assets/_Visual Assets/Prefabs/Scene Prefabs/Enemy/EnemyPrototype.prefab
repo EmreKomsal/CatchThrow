@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00932b7ec104af14d92794928ae8f6c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyHealth: 1
   gunTip: {fileID: 1636705389862040795}
   projectilePrefab: {fileID: 1349129931018906663, guid: e48b20726906b484e9550a1c7c450628,
     type: 3}
@@ -151,7 +152,8 @@ MonoBehaviour:
   animator: {fileID: 0}
   attackTrigger: Attack
   deathTrigger: Die
-  speed: 5
+  damageTrigger: Damage
+  projectile_speed: 3
 --- !u!95 &6549718300637025501
 Animator:
   serializedVersion: 3

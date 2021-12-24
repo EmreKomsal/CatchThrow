@@ -78,6 +78,7 @@ public class LevelController : MonoBehaviour
     //Finds all enemy's in level
     private void EnemyLister()
     {
+        enemyHolder = GameObject.FindWithTag("EnemyHolder");
         foreach (Transform enemy in enemyHolder.transform)
         {
             EnemyProjectile enemyProjectile = enemy.GetComponent<EnemyProjectile>();
