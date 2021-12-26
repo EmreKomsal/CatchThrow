@@ -152,7 +152,7 @@ public class GoogleAds : MonoBehaviour
 
     private void HandleUserEarnedReward(object sender, Reward e)
     {
-        MonoBehaviour.print("HandleUserEarnedReward event received");
+        MonoBehaviour.print("HandleUserEarnedReward event received and LevelEnd:" + controller.LevelEndCheck());
         if (!controller.LevelEndCheck())//Resume Game
         {
             controller.readyForEncounter = true;
@@ -160,7 +160,7 @@ public class GoogleAds : MonoBehaviour
         }
         else if (controller.LevelEndCheck())//3x Reward
         {
-            //Reward three times
+            controller.SetRewardCoin(controller.GetRewardCoin() * 3);
         }
     }
 
@@ -208,6 +208,5 @@ public class GoogleAds : MonoBehaviour
         return new AdRequest.Builder()
             .AddKeyword("unity-admob")
             .Build();
-
     }
 }

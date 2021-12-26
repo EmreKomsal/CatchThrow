@@ -22,12 +22,26 @@ public class UIController : MonoBehaviour
     [Header("Level Controller")] [SerializeField]
     private LevelController controller;
     private bool levelStarted = false;
+
+    [Header("Coin System")] 
+    [SerializeField] private CoinSystem coinSystem;
+
+    [SerializeField] private Text levelRewardText;
     
     private void Start()
     {
         controller = GetComponent<LevelController>();
+        coinSystem = GetComponent<CoinSystem>();
     }
-    
+
+    private void LateUpdate()
+    {
+        if (levelCompleteCanvas.enabled)
+        {
+            levelRewardText.text = controller.GetRewardCoin().ToString();
+        }
+    }
+
     public void StartLevel()
     {
         controller.NextEncounter();
@@ -70,6 +84,7 @@ public class UIController : MonoBehaviour
     }
     public void NextLevel()//Reset level if button clicked
     {
+        coinSystem.AddCoin(controller.GetRewardCoin());
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1f;  
         GoogleAds.Instance.InterstitialCallAds();

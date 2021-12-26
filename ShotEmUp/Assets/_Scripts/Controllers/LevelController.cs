@@ -29,6 +29,8 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] private UIController uiController;
 
+    [SerializeField]  private int rewardCoin = 50;
+
     private IEnumerator levelEndHandler;
 
     // Start is called before the first frame update
@@ -76,6 +78,8 @@ public class LevelController : MonoBehaviour
         //Throw projectile with rigidbody force
         projectile.GetComponent<Rigidbody>().AddForce(aimVector, ForceMode.Impulse);
     }
+
+    #region Encounter
 
     //Finds all enemy's in level
     private void EnemyLister()
@@ -191,7 +195,7 @@ public class LevelController : MonoBehaviour
         Debug.Log("Get Ready for next encounter");
         if (enemyLevelList.Count == 0)
         {
-            uiController.LevelSuccess();
+            LevelEndHandler();
             Debug.Log("Get Ready for next level. This level is completed");
         }
         else
@@ -208,22 +212,33 @@ public class LevelController : MonoBehaviour
             SetEncounter();
             if (enemyLevelList.Count <= 0)
             {
-                isLevelEnded = true;
+                LevelEndHandler();
             }
             currentEncounter++;
         }
     }
+    
+    #endregion
 
+    #region Level Handler
     private void LevelEndHandler()
     {
-        playerControls.MovePlayer(playerPositions[currentEncounter + 1]);
+        isLevelEnded = true;
+        uiController.LevelSuccess();
+        /*
+        if (playerPositions.Count >= currentEncounter + 1)
+        {
+            playerControls.MovePlayer(playerPositions[currentEncounter + 1]);
+        }
         StartCoroutine(LevelEnd(2f));
+        */
     }
 
     private IEnumerator LevelEnd(float time)
     {
         yield return new WaitForSeconds(time);
         isLevelEnded = true;
+        uiController.LevelSuccess();
     }
     
 
@@ -244,4 +259,20 @@ public class LevelController : MonoBehaviour
         return isLevelEnded;
     }
     
+
+    #endregion
+
+    #region CoinRegion
+
+    public int GetRewardCoin()
+    {
+        return rewardCoin;
+    }
+
+    public void SetRewardCoin(int reward)
+    {
+        rewardCoin = reward;
+        Debug.Log("Reward Coin:" + rewardCoin);
+    }
+    #endregion
 }
