@@ -24,5 +24,6 @@ public class CoinSystem : MonoBehaviour
     public void AddCoin(int coinAmount)
     {
         coin += coinAmount;
+        PlayerPrefs.SetInt("coin", coin);
     }
 }
