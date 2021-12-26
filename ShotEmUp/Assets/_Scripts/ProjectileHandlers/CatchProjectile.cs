@@ -22,6 +22,7 @@ public class CatchProjectile : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private string catchTrigger = "Catch";
     [SerializeField] private string throwTrigger = "Attack";
+    [SerializeField] private bool isAttacking = false;
 
     private void Start()
     {
@@ -35,7 +36,7 @@ public class CatchProjectile : MonoBehaviour
         touchPhase = playerControls.touch.phase;
         if (touchPhase == TouchPhase.Ended || touchPhase == TouchPhase.Canceled)
         {
-            if (catchedObject !=null)
+            if (catchedObject !=null && !isAttacking)
             {
                 Throw(catchedObject);
             }
@@ -79,20 +80,28 @@ public class CatchProjectile : MonoBehaviour
     private void Throw(Transform projectileTransform)
     {
         animator.SetTrigger(throwTrigger);
+        isAttacking = true;
         projectileTransform.GetComponent<Collider>().enabled = true;
         Rigidbody prRigidbody = projectileTransform.GetComponent<Rigidbody>();
         prRigidbody.isKinematic = false;
-        catchedObject.parent = null;
         RaycastHit hitInfo = Aim();
         if (hitInfo.transform == null)
         {
             hitInfo.point = Vector3.forward * 999;
         }
+        StartCoroutine(throwEnumerator(0.7f, projectileTransform, hitInfo));
+    }
+
+    private IEnumerator throwEnumerator(float time, Transform projectileTransform, RaycastHit hitInfo)
+    {
+        yield return new WaitForSeconds(time);
+        catchedObject.parent = null;
         //Make something for not found enemy situation
         controller.ThrowProjectile(transform.position, hitInfo.point ,catchedObject.gameObject, throwSpeed, false);
         catchedObject = null;
         crosshairImage.gameObject.SetActive(false);
         SoundManager.Instance.PlayPlayerSound(SoundManager.PlayerSoundTypes.PlayerArrowThrowingSound);
+        isAttacking = false;
     }
 
     private RaycastHit Aim()
