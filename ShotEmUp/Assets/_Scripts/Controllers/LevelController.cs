@@ -11,8 +11,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] private PlayerControls playerControls; //Player's Transform easy calling
     [SerializeField] private Transform playerPositionHolder;
     [SerializeField] private List<Vector3> playerPositions; //Player's Desired Location in Start of Game
-    
     public bool readyForEncounter = false;
+    
     [Header("Hand Properties")] 
     [SerializeField] private GameObject hand; //Player Hand
 
@@ -29,9 +29,9 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] private UIController uiController;
 
-    [SerializeField]  private int rewardCoin = 50;
-
-    private IEnumerator levelEndHandler;
+    [SerializeField] private GameObject conffetti;
+    [SerializeField] private Transform conffettiPos;
+    [SerializeField] private int rewardCoin = 50;
 
     // Start is called before the first frame update
     void Start()
@@ -224,6 +224,7 @@ public class LevelController : MonoBehaviour
     private void LevelEndHandler()
     {
         isLevelEnded = true;
+        Instantiate(conffetti, conffettiPos);
         uiController.LevelSuccess();
         /*
         if (playerPositions.Count >= currentEncounter + 1)
