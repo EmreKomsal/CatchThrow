@@ -29,6 +29,8 @@ public class LevelController : MonoBehaviour
 
     [SerializeField] private UIController uiController;
 
+    private IEnumerator levelEndHandler;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -210,6 +212,18 @@ public class LevelController : MonoBehaviour
             }
             currentEncounter++;
         }
+    }
+
+    private void LevelEndHandler()
+    {
+        playerControls.MovePlayer(playerPositions[currentEncounter + 1]);
+        StartCoroutine(LevelEnd(2f));
+    }
+
+    private IEnumerator LevelEnd(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isLevelEnded = true;
     }
     
 

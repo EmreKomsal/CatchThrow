@@ -23,6 +23,7 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] private string attackTrigger = "Attack";
     [SerializeField] private string deathTrigger = "Die";
     [SerializeField] private string damageTrigger = "Damage";
+    [SerializeField] private Collider boxCollider;
 
     public float projectile_speed = 5;
 
@@ -33,6 +34,7 @@ public class EnemyProjectile : MonoBehaviour
         //Find controller used in every object
         controller = GameObject.FindWithTag("GameController").GetComponent<LevelController>();
         animator = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider>();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -63,6 +65,7 @@ public class EnemyProjectile : MonoBehaviour
         transform.LookAt(playerPos);
         _attackCorutine = AttackCoroutine(0.2f, playerPos);
         StartCoroutine(_attackCorutine);
+        boxCollider.enabled = false;
     }
     
     IEnumerator AttackCoroutine(float waitTime, Vector3 playerPos)
@@ -70,6 +73,7 @@ public class EnemyProjectile : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         controller.ThrowProjectile(gunTip.position, playerPos, projectilePrefab, projectile_speed);
         SoundManager.Instance.PlayEnemySound(SoundManager.EnemySoundTypes.EnemyArrowThrowingSound);
+        boxCollider.enabled = true;
     }
 
     public void Die()
