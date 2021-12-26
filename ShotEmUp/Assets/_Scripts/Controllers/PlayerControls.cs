@@ -10,7 +10,6 @@ public class PlayerControls : MonoBehaviour
     [Header("General Properties")] 
     [SerializeField] private LevelController controller;
     public float speed = 0.0001f; //Hand Position Lerp Speed
-    public bool doLerp = true;
     public Touch touch;//Hand Position Lerp Speed
     [SerializeField] private int health = 3;
     [SerializeField] private NavMeshAgent agent;
@@ -32,16 +31,21 @@ public class PlayerControls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MoveHand(doLerp, speed);
-        if (!agent.hasPath && isMoving)//if agent has path do walking to there
+        MoveHand(speed);
+        if (agent.hasPath)//if agent has path do walking to there
+        {
+            isMoving = true;
+        }
+        else
         {
             isMoving = false;
-            controller.readyForEncounter = true;
         }
+
+        controller.readyForEncounter = !isMoving;
     }
 
     //In this function hand position controlled
-    void MoveHand(bool _doLerp , float _speed)
+    void MoveHand(float _speed)
     {
         if (Input.touchCount > 0)
         {
