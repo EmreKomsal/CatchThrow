@@ -1575,6 +1575,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 424936425, guid: a2b450ba32c97c94c90c741dcbec5f24, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 602536597, guid: a2b450ba32c97c94c90c741dcbec5f24, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1978579713, guid: a2b450ba32c97c94c90c741dcbec5f24, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4799868949913544243, guid: a2b450ba32c97c94c90c741dcbec5f24,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -1815.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4799868949913544243, guid: a2b450ba32c97c94c90c741dcbec5f24,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -192.36505
+      objectReference: {fileID: 0}
     - target: {fileID: 5033213043303500405, guid: a2b450ba32c97c94c90c741dcbec5f24,
         type: 3}
       propertyPath: m_Name
@@ -2150,7 +2172,7 @@ GameObject:
   - component: {fileID: 1347224299}
   m_Layer: 0
   m_Name: ---EnemyHolder---
-  m_TagString: Untagged
+  m_TagString: EnemyHolder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
