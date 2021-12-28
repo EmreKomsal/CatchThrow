@@ -117,7 +117,7 @@ MonoBehaviour:
   gunTip: {fileID: 7675987257799583198}
   projectilePrefab: {fileID: 1349129931018906663, guid: 7979f9f94e1af420cb4b2ad6199b6996,
     type: 3}
-  enemyEncounterNumber: 0
+  enemyEncounterNumber: 3
   canShoot: 1
   controller: {fileID: 0}
   animator: {fileID: 0}
@@ -125,7 +125,7 @@ MonoBehaviour:
   deathTrigger: Die
   damageTrigger: Damage
   boxCollider: {fileID: 0}
-  projectile_speed: 3
+  projectile_speed: 6
 --- !u!95 &6549718300637025501
 Animator:
   serializedVersion: 3

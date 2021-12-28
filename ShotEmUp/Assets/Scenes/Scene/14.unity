@@ -1765,6 +1765,11 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 2036853986038667118, guid: 670993f481941df49aa9b6959cb76f4b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 670993f481941df49aa9b6959cb76f4b, type: 3}
 --- !u!4 &851672871 stripped
@@ -2438,6 +2443,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Barrel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036853986038667118, guid: 670993f481941df49aa9b6959cb76f4b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 670993f481941df49aa9b6959cb76f4b, type: 3}
