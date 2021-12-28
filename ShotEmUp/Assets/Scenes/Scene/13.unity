@@ -413,6 +413,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
         type: 3}
+      propertyPath: projectile_speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
+        type: 3}
       propertyPath: enemyEncounterNumber
       value: 1
       objectReference: {fileID: 0}
@@ -496,6 +501,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1347224299}
     m_Modifications:
+    - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
+        type: 3}
+      propertyPath: projectile_speed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
         type: 3}
       propertyPath: enemyEncounterNumber
@@ -746,6 +756,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1347224299}
     m_Modifications:
+    - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
+        type: 3}
+      propertyPath: projectile_speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
         type: 3}
       propertyPath: enemyEncounterNumber
@@ -1406,7 +1421,7 @@ PrefabInstance:
     - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
       propertyPath: enemyEncounterNumber
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945623, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
@@ -1486,7 +1501,7 @@ PrefabInstance:
     - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
       propertyPath: enemyEncounterNumber
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945623, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
@@ -1689,7 +1704,7 @@ PrefabInstance:
     - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
       propertyPath: enemyEncounterNumber
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945623, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
@@ -1851,6 +1866,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1347224299}
     m_Modifications:
+    - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
+        type: 3}
+      propertyPath: projectile_speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
         type: 3}
       propertyPath: enemyEncounterNumber
@@ -2813,6 +2833,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
         type: 3}
+      propertyPath: projectile_speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
+        type: 3}
       propertyPath: enemyEncounterNumber
       value: 2
       objectReference: {fileID: 0}
@@ -3393,6 +3418,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
         type: 3}
+      propertyPath: projectile_speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
+        type: 3}
       propertyPath: enemyEncounterNumber
       value: 1
       objectReference: {fileID: 0}
@@ -3729,7 +3759,7 @@ PrefabInstance:
     - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
       propertyPath: enemyEncounterNumber
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945623, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
@@ -3974,7 +4004,7 @@ PrefabInstance:
     - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
       propertyPath: enemyEncounterNumber
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945623, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
@@ -4051,6 +4081,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1347224299}
     m_Modifications:
+    - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
+        type: 3}
+      propertyPath: projectile_speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945616, guid: 6fed7059ab179f64f8cfdfbc86d55e3d,
         type: 3}
       propertyPath: enemyEncounterNumber

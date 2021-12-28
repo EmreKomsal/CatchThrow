@@ -133,6 +133,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
+      propertyPath: projectile_speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
+        type: 3}
       propertyPath: enemyEncounterNumber
       value: 2
       objectReference: {fileID: 0}
@@ -745,6 +750,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1347224299}
     m_Modifications:
+    - target: {fileID: 1636705390146945616, guid: 0a8b8f22d2d95f14d95d5ef387d57ff8,
+        type: 3}
+      propertyPath: enemyEncounterNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945623, guid: 0a8b8f22d2d95f14d95d5ef387d57ff8,
         type: 3}
       propertyPath: m_RootOrder
@@ -820,6 +830,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1347224299}
     m_Modifications:
+    - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
+        type: 3}
+      propertyPath: projectile_speed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
       propertyPath: enemyEncounterNumber
@@ -1196,6 +1211,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 218603981, guid: a2b450ba32c97c94c90c741dcbec5f24, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -3.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 826938110, guid: a2b450ba32c97c94c90c741dcbec5f24, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.91
+      objectReference: {fileID: 0}
     - target: {fileID: 5033213043303500405, guid: a2b450ba32c97c94c90c741dcbec5f24,
         type: 3}
       propertyPath: m_Name
@@ -2017,6 +2040,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
         type: 3}
+      propertyPath: projectile_speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1636705390146945616, guid: e7dbda6d0df9dba4ea52e10f0bd54322,
+        type: 3}
       propertyPath: enemyEncounterNumber
       value: 2
       objectReference: {fileID: 0}
@@ -2120,8 +2148,8 @@ Transform:
   - {fileID: 1095882297}
   - {fileID: 658286133}
   - {fileID: 885859717}
-  - {fileID: 376281329}
   - {fileID: 546404766}
+  - {fileID: 376281329}
   - {fileID: 1300645635}
   - {fileID: 2238579}
   - {fileID: 435414133}
