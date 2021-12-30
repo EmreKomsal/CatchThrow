@@ -3,8 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 
 public class GoogleAds : MonoBehaviour
 {
