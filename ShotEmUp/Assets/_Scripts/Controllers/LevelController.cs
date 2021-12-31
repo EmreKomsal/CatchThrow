@@ -40,19 +40,7 @@ public class LevelController : MonoBehaviour
         PlayerPrefs.SetInt("checkpoint", SceneManager.GetActiveScene().buildIndex);
         uiController = GetComponent<UIController>();
         //Enemy Listing Operations will come here
-        EnemyLister();
-        if (playerObj == null)
-        {
-            Debug.LogError("PlayerObj couldn't found");
-        }
-        else
-        {
-            playerControls = playerObj.GetComponent<PlayerControls>();
-            hand = FindObjectOfType<CatchProjectile>().gameObject;
-            //SetEncounter(currentEncounter);
-            Debug.Log("Player Starting Properties are done");
-        }
-        enemyTimer = Random.Range(enemyTimerMin, enemyTimerMax);
+        StartLevel();
         for (int i = 0; i < playerPositionHolder.childCount; i++)
         {
             playerPositions.Add(playerPositionHolder.GetChild(i).transform.position);
@@ -86,6 +74,22 @@ public class LevelController : MonoBehaviour
         projectile.transform.LookAt(aimedPos);
         //Throw projectile with rigidbody force
         projectile.GetComponent<Rigidbody>().AddForce(aimVector, ForceMode.Impulse);
+    }
+
+    private void StartLevel()
+    {
+        EnemyLister();
+        if (playerObj == null)
+        {
+            Debug.LogError("PlayerObj couldn't found");
+        }
+        else
+        {
+            playerControls = playerObj.GetComponent<PlayerControls>();
+            hand = FindObjectOfType<CatchProjectile>().gameObject;
+            Debug.Log("Player Starting Properties are done");
+        }
+        enemyTimer = Random.Range(enemyTimerMin, enemyTimerMax);
     }
 
     #region Encounter
@@ -262,6 +266,7 @@ public class LevelController : MonoBehaviour
     {
         playerControls.SetHealth(healthAmount);
         uiController.ResumeGame();
+        readyForEncounter = true;
     }
 
     public bool LevelEndCheck()
