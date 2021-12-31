@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 6549718300637025501}
   - component: {fileID: -130176569607238630}
   m_Layer: 7
-  m_Name: EnemyPrototype
+  m_Name: BasicEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,14 +146,15 @@ MonoBehaviour:
   gunTip: {fileID: 1636705389862040795}
   projectilePrefab: {fileID: 1349129931018906663, guid: e48b20726906b484e9550a1c7c450628,
     type: 3}
-  enemyEncounterNumber: 0
+  enemyEncounterNumber: 1
   canShoot: 1
   controller: {fileID: 0}
   animator: {fileID: 0}
   attackTrigger: Attack
   deathTrigger: Die
   damageTrigger: Damage
-  projectile_speed: 3
+  boxCollider: {fileID: 0}
+  projectile_speed: 6
 --- !u!95 &6549718300637025501
 Animator:
   serializedVersion: 3
