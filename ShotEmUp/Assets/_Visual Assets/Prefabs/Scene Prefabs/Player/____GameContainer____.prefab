@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 0}
-  speed: 0.3
+  speed: 0.033
   health: 3
   agent: {fileID: 0}
   agentOnPoint: 0
@@ -1062,7 +1062,7 @@ PrefabInstance:
     - target: {fileID: 523860088572667831, guid: cd252d0e67b5f07439d00a8efae4c08c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -1769.9424
+      value: -1802.7468
       objectReference: {fileID: 0}
     - target: {fileID: 523860088572667831, guid: cd252d0e67b5f07439d00a8efae4c08c,
         type: 3}
@@ -1072,7 +1072,7 @@ PrefabInstance:
     - target: {fileID: 523860088572667831, guid: cd252d0e67b5f07439d00a8efae4c08c,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -215.02881
+      value: -198.62659
       objectReference: {fileID: 0}
     - target: {fileID: 523860088572667848, guid: cd252d0e67b5f07439d00a8efae4c08c,
         type: 3}
