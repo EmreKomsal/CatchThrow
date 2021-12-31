@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   originPos: {x: 0, y: 0, z: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  isRight: 0
+  moveLength: 3
   barrel: {fileID: 4537096385998978272}
 --- !u!1 &4035509458712574927
 GameObject:
@@ -91,8 +94,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.0469406
-  m_Center: {x: -0.012223959, y: 0.2837572, z: 0}
+  m_Radius: 1.2295431
+  m_Center: {x: -0.012223959, y: 0.46635973, z: 0}
 --- !u!114 &5437414831578740612
 MonoBehaviour:
   m_ObjectHideFlags: 0

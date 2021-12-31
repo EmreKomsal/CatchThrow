@@ -85,10 +85,6 @@ public class CatchProjectile : MonoBehaviour
         Rigidbody prRigidbody = projectileTransform.GetComponent<Rigidbody>();
         prRigidbody.isKinematic = false;
         RaycastHit hitInfo = Aim();
-        if (hitInfo.transform == null)
-        {
-            hitInfo.point = Vector3.forward * 999;
-        }
         StartCoroutine(throwEnumerator(0.7f, projectileTransform, hitInfo));
     }
 
@@ -108,6 +104,10 @@ public class CatchProjectile : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(crosshairPos.position);
         Physics.Raycast(ray, out RaycastHit hitInfo, 999, layerMask);
+        if (hitInfo.transform == null)
+        {
+            hitInfo.point = ray.direction;
+        }
         return hitInfo;
     }
 }
