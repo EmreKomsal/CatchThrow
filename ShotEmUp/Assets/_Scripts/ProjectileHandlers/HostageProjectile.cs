@@ -18,6 +18,7 @@ public class HostageProjectile : MonoBehaviour
     public void HostageKilled()
     {
         Debug.Log("You killed hostage. Game Over");
+        Destroy(gameObject);
         controller.GameOverHandler();
     }
     private void OnCollisionEnter(Collision other)

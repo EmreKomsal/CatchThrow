@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Scene/CheckpointLoader.unity
+    guid: ffdd3460734b14b5faf9a00989a17a1e
+  - enabled: 1
     path: Assets/Scenes/Scene/1.unity
     guid: 8a2dbaf5b5314884f8c0c433245782c9
   - enabled: 1

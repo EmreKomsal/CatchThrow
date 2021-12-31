@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -85,23 +84,23 @@ public class UIController : MonoBehaviour
     public void NextLevel()//Reset level if button clicked
     {
         coinSystem.AddCoin(controller.GetRewardCoin());
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1f;  
         GoogleAds.Instance.InterstitialCallAds();
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void WatchToResume()
     {
         GoogleAds.Instance.ResumeRewardedAd();
         Debug.Log("Resume rewarded Ad Called");
-        failCanvas.transform.GetChild(2).gameObject.SetActive(false);//Close resume button for next time
+        failCanvas.transform.GetChild(3).gameObject.SetActive(false);//Close resume button for next time
     }
 
     public void WatchToMoreReward()
     {
         GoogleAds.Instance.LevelEndRewardedAd();
         Debug.Log("x3 rewarded Ad Called");
-        levelCompleteCanvas.transform.GetChild(2).gameObject.SetActive(false);//Close resume button for next time
+        levelCompleteCanvas.transform.GetChild(3).gameObject.SetActive(false);//Close resume button for next time
     }
 
     public void ResumeGame()

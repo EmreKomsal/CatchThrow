@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class LevelController : MonoBehaviour
@@ -36,6 +37,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerPrefs.SetInt("checkpoint", SceneManager.GetActiveScene().buildIndex);
         uiController = GetComponent<UIController>();
         //Enemy Listing Operations will come here
         EnemyLister();
@@ -54,6 +56,13 @@ public class LevelController : MonoBehaviour
         for (int i = 0; i < playerPositionHolder.childCount; i++)
         {
             playerPositions.Add(playerPositionHolder.GetChild(i).transform.position);
+        }
+        
+        Debug.Log(Time.timeScale);
+
+        if (Time.timeScale < 1)
+        {
+            Time.timeScale = 1;
         }
     }
 
