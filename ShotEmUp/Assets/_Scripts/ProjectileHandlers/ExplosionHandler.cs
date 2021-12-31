@@ -16,6 +16,7 @@ public class ExplosionHandler : MonoBehaviour
     private bool isBroken = false;
     private void OnCollisionEnter(Collision other)
     {
+        Debug.Log(other.gameObject.tag);
         if (TagList.Contains(other.gameObject.tag) && !isBroken)
         {
             if (isExplosive)
@@ -41,7 +42,11 @@ public class ExplosionHandler : MonoBehaviour
                 //Kill all enemies in explosion zone
                 Debug.Log(nearbyEnemy.gameObject.name);
                 EnemyProjectile enemyProjectile = nearbyEnemy.GetComponent<EnemyProjectile>();
-                enemyProjectile.Die(); //call kill function
+                if(enemyProjectile != null)//call kill function
+                {
+                    enemyProjectile.Die();
+                }
+                 
             }
         }
     }

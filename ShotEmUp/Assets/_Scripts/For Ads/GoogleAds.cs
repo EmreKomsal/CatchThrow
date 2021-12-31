@@ -47,7 +47,7 @@ public class GoogleAds : MonoBehaviour
     public void RequestInterstitial()
     {
 #if UNITY_ANDROID
-        string InterstitialadUnitId = "ca-app-pub-5875384463485278/9600515707";
+        string InterstitialadUnitId = "ca-app-pub-1274321198457494/4003651623";
 #elif UNITY_IPHONE
         string InterstitialadUnitId = "ca-app-pub-5875384463485278/2101299632";
 #else
@@ -118,7 +118,7 @@ public class GoogleAds : MonoBehaviour
     public RewardedAd RequestRewarded()
     {
 #if UNITY_ANDROID
-        string RewardedadUnitId = "ca-app-pub-3940256099942544/5224354917";
+        string RewardedadUnitId = "ca-app-pub-1274321198457494/9027063380";
 #elif UNITY_IPHONE
         string RewardedadUnitId = "ca-app-pub-3940256099942544/1712485313";
 #else
