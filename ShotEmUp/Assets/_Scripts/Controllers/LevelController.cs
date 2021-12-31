@@ -266,7 +266,6 @@ public class LevelController : MonoBehaviour
     {
         playerControls.SetHealth(healthAmount);
         uiController.ResumeGame();
-        readyForEncounter = true;
     }
 
     public bool LevelEndCheck()
