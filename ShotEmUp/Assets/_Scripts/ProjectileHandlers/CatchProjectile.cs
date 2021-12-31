@@ -108,6 +108,7 @@ public class CatchProjectile : MonoBehaviour
         {
             hitInfo.point = ray.direction;
         }
+        Debug.Log(hitInfo.transform.name);
         return hitInfo;
     }
 }
