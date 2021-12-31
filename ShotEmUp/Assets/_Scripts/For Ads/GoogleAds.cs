@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using GoogleMobileAds.Api;
 
 public class GoogleAds : MonoBehaviour
@@ -146,6 +147,11 @@ public class GoogleAds : MonoBehaviour
     private void HandleRewardedAdClosed(object sender, EventArgs e)
     {
         MonoBehaviour.print("HandleRewardedAdClosed");
+        if (!controller.LevelEndCheck())
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            Time.timeScale = 1f;
+        }
     }
 
     private void HandleUserEarnedReward(object sender, Reward e)
