@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using Random = UnityEngine.Random;
 
 public class EnemyProjectile : MonoBehaviour
@@ -17,6 +18,7 @@ public class EnemyProjectile : MonoBehaviour
     public bool canShoot = true;
 
     [SerializeField] private LevelController controller;
+    [SerializeField] private NavMeshAgent agent;
     
     [Header("AnimControls")]
     [SerializeField] private Animator animator;
@@ -35,6 +37,7 @@ public class EnemyProjectile : MonoBehaviour
         controller = GameObject.FindWithTag("GameController").GetComponent<LevelController>();
         animator = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void OnCollisionEnter(Collision other)
@@ -78,6 +81,7 @@ public class EnemyProjectile : MonoBehaviour
 
     public void Die()
     {
+        Destroy(agent);
         animator.SetTrigger(deathTrigger);
         SoundManager.Instance.PlayEnemySound(SoundManager.EnemySoundTypes.EnemyDieSound);
         canShoot = false;
