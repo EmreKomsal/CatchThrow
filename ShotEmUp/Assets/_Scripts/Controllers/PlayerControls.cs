@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -18,6 +17,8 @@ public class PlayerControls : MonoBehaviour
     [Header("Hand Properties")]
     public string handName; //Player's hand name
     [SerializeField] private Transform handTransform; //Player hand transform
+
+    public float rotationSpeed = 20f;
 
     // Start is called before the first frame update
     void Start()
@@ -99,7 +100,7 @@ public class PlayerControls : MonoBehaviour
     {
         Vector3 rotVector = enemyPos - transform.position; //Get rotation vector by referencing enemy pos to player position 
         Quaternion rotTarget = Quaternion.LookRotation(new Vector3(rotVector.x, 0,rotVector.z));
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotTarget, Time.deltaTime * 30);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotTarget, Time.deltaTime * rotationSpeed);
     }
     //Player Death Check and Handler
     private void PlayerDeath(GameObject projectile)

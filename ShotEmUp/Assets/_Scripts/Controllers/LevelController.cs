@@ -161,7 +161,8 @@ public class LevelController : MonoBehaviour
             {
                 currentEnemy = enemyEncounterList[enemyEncounterList.Count / 2];
             }
-            playerControls.LookToEnemy(currentEnemy.transform.position);
+            //Look To Enemy disabled
+            //playerControls.LookToEnemy(currentEnemy.transform.position);
             if (hand.GetComponent<CatchProjectile>().catchedObject == null && readyForEncounter)
             {
                 if (enemyTimer > 0)
